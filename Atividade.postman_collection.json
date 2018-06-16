@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "f6414bfa-d44d-4a6e-994a-e68344a6a08c",
+		"name": "Atividade",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Requisição de Filme",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "61a2999d-d12c-4f89-affa-1c79a72324da",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"USA\");",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    tests[\"Validar se o nome do filme é Shrek\"] = jsonData.Title === \"Shrek\";",
+							"    tests[\"Validar o Rated\"] = jsonData.Rated === \"PG\";",
+							"    tests[\"Validar a data de release\"] = jsonData.Released === \"18 May 2001\";",
+							"    tests[\"Validar o tempo do filme\"] = jsonData.Runtime === \"90 min\";",
+							"    tests[\"Validar o idioma\"] = jsonData.Language === \"English\";",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://omdbapi.com?t=Shrek&apikey=a73bf385",
+					"protocol": "http",
+					"host": [
+						"omdbapi",
+						"com"
+					],
+					"query": [
+						{
+							"key": "t",
+							"value": "Shrek"
+						},
+						{
+							"key": "apikey",
+							"value": "a73bf385"
+						}
+					]
+				},
+				"description": "Atividade: filme"
+			},
+			"response": []
+		},
+		{
+			"name": "Requisição de Atividade",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db8877eb-5860-4119-a4c4-bc9d1962e8a1",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"USA\");",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    tests[\"Validar se o nome da série é The Flash\"] = jsonData.Title === \"The Flash\";",
+							"    tests[\"Validar o ano é 2014–\"] = jsonData.Year === \"2014–\";",
+							"    tests[\"Validar o Rated\"] = jsonData.Rated === \"TV-PG\";",
+							"    tests[\"Validar o Released\"] = jsonData.Released === \"07 Oct 2014\";",
+							"    tests[\"Validar a duração\"] = jsonData.Runtime === \"43 min\";",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://omdbapi.com?t=The Flash&apikey=a73bf385",
+					"protocol": "http",
+					"host": [
+						"omdbapi",
+						"com"
+					],
+					"query": [
+						{
+							"key": "t",
+							"value": "The Flash"
+						},
+						{
+							"key": "apikey",
+							"value": "a73bf385"
+						}
+					]
+				},
+				"description": "Atividade: Série"
+			},
+			"response": []
+		}
+	]
+}
